@@ -5,16 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AoC"
         mc:Ignorable="d"
-        Title="MainWindow" Height="140" Width="272">
+        Title="MainWindow" Height="252" Width="411">
     <Grid>
-        <ComboBox SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Years}" SelectedItem="{Binding Year}" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Years}" SelectedItem="{Binding Year}" HorizontalAlignment="Left" Margin="44,9,0,0" VerticalAlignment="Top" Width="120"/>
         <!-- CanContentScroll empty extra row without it -->
         <!-- https://stackoverflow.com/questions/38953554/c-sharp-wpf-combobox-exclude-last-row-or-blank-space-of-binding-data-bindin -->
-        <ComboBox ItemsSource="{Binding Days}" ScrollViewer.CanContentScroll="False" SelectedItem="{Binding Day, Mode=TwoWay}" HorizontalAlignment="Left" Margin="135,33,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Year" HorizontalAlignment="Left" Margin="12,7,0,0" VerticalAlignment="Top"/>
-        <Label Content="Day" HorizontalAlignment="Left" Margin="135,7,0,0" VerticalAlignment="Top"/>
-        <Button Content="Run on code" IsEnabled="False" Margin="161,67,0,0" HorizontalAlignment="Left" Width="94" Height="22" VerticalAlignment="Top"/>
-        <Button Content="Download" Click="Button_Click" IsEnabled="{Binding FileCanBeDownloaded}" Margin="10,67,0,0" HorizontalAlignment="Left" Width="73" Height="22" VerticalAlignment="Top"/>
+        <ComboBox ItemsSource="{Binding Days}" ScrollViewer.CanContentScroll="False" SelectedItem="{Binding Day, Mode=TwoWay}" HorizontalAlignment="Left" Margin="44,36,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Year:" HorizontalAlignment="Left" Margin="9,5,0,0" VerticalAlignment="Top"/>
+        <Label Content="Day:" HorizontalAlignment="Left" Margin="9,32,0,0" VerticalAlignment="Top"/>
+        <Button Content="Run on code" IsEnabled="False" Margin="10,101,0,0" HorizontalAlignment="Left" Width="94" Height="22" VerticalAlignment="Top"/>
+        <Button Content="{Binding AvailableActionString}" Click="Button_Click" IsEnabled="{Binding ActionIsAvailable}" Margin="10,77,0,0" HorizontalAlignment="Left" Width="94" Height="22" VerticalAlignment="Top"/>
+        <Label Content="Current Read: " HorizontalAlignment="Left" Margin="169,5,0,0" VerticalAlignment="Top" Width="84"/>
+        <Label Content="{Binding ReadFileDate}" HorizontalAlignment="Left" Margin="247,5,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

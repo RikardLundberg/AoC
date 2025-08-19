@@ -60,7 +60,7 @@ namespace AoC
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.DownloadFile();
+            viewModel.ReadDownloadFile();
         }
     }
 }
