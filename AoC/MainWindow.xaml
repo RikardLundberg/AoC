@@ -4,13 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AoC"
+        xmlns:custom="clr-namespace:AoC.Common.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="252" Width="411">
     <Grid>
-        <ComboBox SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Years}" SelectedItem="{Binding Year}" HorizontalAlignment="Left" Margin="44,9,0,0" VerticalAlignment="Top" Width="120"/>
+        <custom:ScrollableComboBox SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Years}" SelectedItem="{Binding Year}" HorizontalAlignment="Left" Margin="44,9,0,0" VerticalAlignment="Top" Width="120"/>
         <!-- CanContentScroll empty extra row without it -->
         <!-- https://stackoverflow.com/questions/38953554/c-sharp-wpf-combobox-exclude-last-row-or-blank-space-of-binding-data-bindin -->
-        <ComboBox ItemsSource="{Binding Days}" ScrollViewer.CanContentScroll="False" SelectedItem="{Binding Day, Mode=TwoWay}" HorizontalAlignment="Left" Margin="44,36,0,0" VerticalAlignment="Top" Width="120"/>
+        <custom:ScrollableComboBox ItemsSource="{Binding Days}" ScrollViewer.CanContentScroll="False" SelectedItem="{Binding Day, Mode=TwoWay}" HorizontalAlignment="Left" Margin="44,36,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Year:" HorizontalAlignment="Left" Margin="9,5,0,0" VerticalAlignment="Top"/>
         <Label Content="Day:" HorizontalAlignment="Left" Margin="9,32,0,0" VerticalAlignment="Top"/>
         <Button Content="Run on code" IsEnabled="False" Margin="10,101,0,0" HorizontalAlignment="Left" Width="94" Height="22" VerticalAlignment="Top"/>
