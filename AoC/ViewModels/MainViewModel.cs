@@ -23,6 +23,7 @@ namespace AoC.ViewModels
 
         private bool _fileCanBeDownloaded { get; set; }
         private bool _actionIsAvailable { get; set; }
+        private bool _runIsAvailable { get; set; }
         private string _readFileDate { get; set; }
         private string _availableActionString { get; set; }
         private int _year { get; set; }
@@ -76,6 +77,7 @@ namespace AoC.ViewModels
             FileCanBeDownloaded = !System.IO.File.Exists(GetDownloadPath());
             AvailableActionString = FileCanBeDownloaded ? "Download" : "Read";
             ActionIsAvailable = ActiveModel.Year != Year || ActiveModel.Day != Day || string.IsNullOrEmpty(ActiveModel.PuzzleData);
+            RunIsAvailable = ActiveModel.CanRunImplementation;
         }
 
         public void ReadDownloadFile()
@@ -85,6 +87,11 @@ namespace AoC.ViewModels
             else
                 ReadFile();
             UpdateControls();
+        }
+
+        public void RunCode()
+        {
+            ActiveModel.Run();
         }
 
         public void ReadFile()
@@ -97,9 +104,7 @@ namespace AoC.ViewModels
 
         private void SetActiveModelData(string puzzleData)
         {
-            ActiveModel.PuzzleData = puzzleData;
-            ActiveModel.Year = Year;
-            ActiveModel.Day = Day;
+            ActiveModel.UpdateModel(Year, Day, puzzleData);
             ReadFileDate = $"{Year}, {Day}";
         }
 
@@ -198,6 +203,22 @@ namespace AoC.ViewModels
                 if (this._actionIsAvailable != value)
                 {
                     this._actionIsAvailable = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public bool RunIsAvailable
+        {
+            get
+            {
+                return this._runIsAvailable;
+            }
+            set
+            {
+                if (this._runIsAvailable != value)
+                {
+                    this._runIsAvailable = value;
                     OnPropertyChanged();
                 }
             }

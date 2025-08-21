@@ -14,8 +14,8 @@
         <custom:ScrollableComboBox ItemsSource="{Binding Days}" ScrollViewer.CanContentScroll="False" SelectedItem="{Binding Day, Mode=TwoWay}" HorizontalAlignment="Left" Margin="44,36,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Year:" HorizontalAlignment="Left" Margin="9,5,0,0" VerticalAlignment="Top"/>
         <Label Content="Day:" HorizontalAlignment="Left" Margin="9,32,0,0" VerticalAlignment="Top"/>
-        <Button Content="Run on code" IsEnabled="False" Margin="10,101,0,0" HorizontalAlignment="Left" Width="94" Height="22" VerticalAlignment="Top"/>
-        <Button Content="{Binding AvailableActionString}" Click="Button_Click" IsEnabled="{Binding ActionIsAvailable}" Margin="10,77,0,0" HorizontalAlignment="Left" Width="94" Height="22" VerticalAlignment="Top"/>
+        <Button Content="Run Code" IsEnabled="{Binding RunIsAvailable}" Click="RunCodeButton_Click" Margin="10,101,0,0" HorizontalAlignment="Left" Width="94" Height="22" VerticalAlignment="Top"/>
+        <Button Content="{Binding AvailableActionString}" Click="ReadDownloadButton_Click" IsEnabled="{Binding ActionIsAvailable}" Margin="10,77,0,0" HorizontalAlignment="Left" Width="94" Height="22" VerticalAlignment="Top"/>
         <Label Content="Current Read: " HorizontalAlignment="Left" Margin="169,5,0,0" VerticalAlignment="Top" Width="84"/>
         <Label Content="{Binding ReadFileDate}" HorizontalAlignment="Left" Margin="247,5,0,0" VerticalAlignment="Top"/>
 

@@ -58,9 +58,14 @@ namespace AoC
             viewModel.AddDays();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ReadDownloadButton_Click(object sender, RoutedEventArgs e)
         {
             viewModel.ReadDownloadFile();
+        }
+
+        private void RunCodeButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.RunCode();
         }
     }
 }
