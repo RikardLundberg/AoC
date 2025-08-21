@@ -68,3 +68,4 @@ bld/
 .vs/
 *.filters
 *.user
+*.tmp
