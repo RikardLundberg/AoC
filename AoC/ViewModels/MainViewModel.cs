@@ -1,15 +1,10 @@
 ﻿using AoC.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace AoC.ViewModels
@@ -191,7 +186,7 @@ namespace AoC.ViewModels
                 }
             }
         }
-        
+
         public bool ActionIsAvailable
         {
             get

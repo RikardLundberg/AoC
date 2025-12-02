@@ -1,10 +1,4 @@
 ﻿using AoC.Implementations;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AoC.Models
 {
@@ -32,10 +26,11 @@ namespace AoC.Models
                 if (_implementationClass != null)
                 {
                     var _instance = Activator.CreateInstance(_implementationClass);
-                    if(_instance != null && _instance is IDay)
-                        _implementation = (IDay) _instance;
+                    if (_instance != null && _instance is IDay)
+                        _implementation = (IDay)_instance;
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.Message);
             }
