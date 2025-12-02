@@ -1,23 +1,22 @@
-﻿namespace AoC.Implementations._2024
+﻿namespace AoC.Implementations._2025
 {
-    public class Day1 : IDay
+    internal class Day1 : IDay
     {
-        public Day1()
-        {
-
-        }
-
+        private string _result { get; set; } = string.Empty;
         public string GetResult()
         {
-            throw new NotImplementedException();
+            return _result;
         }
 
         public void Run(string puzzleData)
         {
+
         }
 
         public void TestRun()
         {
+
         }
+
     }
 }

@@ -21,6 +21,7 @@ namespace AoC.ViewModels
         private bool _runIsAvailable { get; set; }
         private string _readFileDate { get; set; }
         private string _availableActionString { get; set; }
+        private string _resultString { get; set; }
         private int _year { get; set; }
         private int _day { get; set; }
 
@@ -87,6 +88,13 @@ namespace AoC.ViewModels
         public void RunCode()
         {
             ActiveModel.Run();
+            ResultString = ActiveModel.ResultString;
+        }
+
+        public void RunTest()
+        {
+            ActiveModel.RunTest();
+            ResultString = ActiveModel.ResultString;
         }
 
         public void ReadFile()
@@ -214,6 +222,22 @@ namespace AoC.ViewModels
                 if (this._runIsAvailable != value)
                 {
                     this._runIsAvailable = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string ResultString
+        {
+            get
+            {
+                return this._resultString;
+            }
+            set
+            {
+                if (this._resultString != value)
+                {
+                    this._resultString = value;
                     OnPropertyChanged();
                 }
             }

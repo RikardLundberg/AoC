@@ -7,6 +7,7 @@ namespace AoC.Models
         public int Day { get; private set; }
         public int Year { get; private set; }
         public string PuzzleData { get; private set; } = string.Empty;
+        public string ResultString { get; private set; } = string.Empty;
 
         public bool CanRunImplementation { get { return _implementation != null; } private set { } }
         private IDay? _implementation { get; set; } = null;
@@ -39,11 +40,13 @@ namespace AoC.Models
         public void Run()
         {
             _implementation?.Run(PuzzleData);
+            ResultString = _implementation?.GetResult() ?? string.Empty;
         }
 
-        public void TestRun()
+        public void RunTest()
         {
             _implementation?.TestRun();
+            ResultString = _implementation?.GetResult() ?? string.Empty;
         }
     }
 }

@@ -2,6 +2,7 @@
 {
     interface IDay
     {
+        string GetResult();
         void Run(string puzzleData);
         void TestRun();
     }

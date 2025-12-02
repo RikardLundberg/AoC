@@ -18,6 +18,9 @@
         <Button Content="{Binding AvailableActionString}" Click="ReadDownloadButton_Click" IsEnabled="{Binding ActionIsAvailable}" Margin="10,77,0,0" HorizontalAlignment="Left" Width="94" Height="22" VerticalAlignment="Top"/>
         <Label Content="Current Read: " HorizontalAlignment="Left" Margin="169,5,0,0" VerticalAlignment="Top" Width="84"/>
         <Label Content="{Binding ReadFileDate}" HorizontalAlignment="Left" Margin="247,5,0,0" VerticalAlignment="Top"/>
+        <Label Content="Result: " HorizontalAlignment="Left" Margin="169,31,0,0" VerticalAlignment="Top" Width="49"/>
+        <Label Content="{Binding ResultString}" HorizontalAlignment="Left" Margin="212,31,0,0" VerticalAlignment="Top"/>
+        <Button Content="Run Test" IsEnabled="{Binding RunIsAvailable}" Click="RunTestButton_Click" Margin="10,125,0,0" HorizontalAlignment="Left" Width="94" Height="22" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

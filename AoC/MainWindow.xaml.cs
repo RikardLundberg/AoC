@@ -53,5 +53,10 @@ namespace AoC
         {
             viewModel.RunCode();
         }
+
+        private void RunTestButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.RunTest();
+        }
     }
 }
