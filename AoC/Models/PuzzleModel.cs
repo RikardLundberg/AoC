@@ -50,7 +50,7 @@ namespace AoC.Models
             }
         }
 
-        public void RunTest()
+        public void RunTest() //rm and make unit tests?
         {
             try
             {
