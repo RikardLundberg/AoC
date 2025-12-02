@@ -16,14 +16,18 @@ namespace AoC.ViewModels
 
         private PuzzleModel ActiveModel { get; set; } = new PuzzleModel();
 
+        #region Private Members
         private bool _fileCanBeDownloaded { get; set; }
         private bool _actionIsAvailable { get; set; }
         private bool _runIsAvailable { get; set; }
         private string _readFileDate { get; set; }
         private string _availableActionString { get; set; }
         private string _resultString { get; set; }
+        private string _timeElapsed { get; set; }
         private int _year { get; set; }
         private int _day { get; set; }
+
+        #endregion Private Members
 
         public MainViewModel()
         {
@@ -89,12 +93,14 @@ namespace AoC.ViewModels
         {
             ActiveModel.Run();
             ResultString = ActiveModel.ResultString;
+            TimeElapsed = ActiveModel.TimeElapsed;
         }
 
         public void RunTest()
         {
             ActiveModel.RunTest();
             ResultString = ActiveModel.ResultString;
+            TimeElapsed = ActiveModel.TimeElapsed;
         }
 
         public void ReadFile()
@@ -144,6 +150,8 @@ namespace AoC.ViewModels
 
             UpdateControls();
         }
+
+        #region Properties
 
         public int Day
         {
@@ -243,6 +251,22 @@ namespace AoC.ViewModels
             }
         }
 
+        public string TimeElapsed
+        {
+            get
+            {
+                return this._timeElapsed;
+            }
+            set
+            {
+                if (this._timeElapsed != value)
+                {
+                    this._timeElapsed = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public string ReadFileDate
         {
             get
@@ -281,5 +305,6 @@ namespace AoC.ViewModels
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion Properties
     }
 }

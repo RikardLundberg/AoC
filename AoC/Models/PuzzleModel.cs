@@ -1,4 +1,5 @@
 ﻿using AoC.Implementations;
+using System.Diagnostics;
 
 namespace AoC.Models
 {
@@ -8,9 +9,11 @@ namespace AoC.Models
         public int Year { get; private set; }
         public string PuzzleData { get; private set; } = string.Empty;
         public string ResultString { get; private set; } = string.Empty;
+        public string TimeElapsed { get; private set; } = string.Empty;
 
         public bool CanRunImplementation { get { return _implementation != null; } private set { } }
         private IDay? _implementation { get; set; } = null;
+        private Stopwatch _stopwatch { get; set; } = new Stopwatch();
 
         public void UpdateModel(int year, int day, string puzzleData)
         {
@@ -39,27 +42,27 @@ namespace AoC.Models
 
         public void Run()
         {
+            RunAction(() => _implementation?.Run(PuzzleData));
+        }
+
+        public void RunTest() //rm and make unit tests?
+        {
+            RunAction(() => _implementation?.TestRun());
+        }
+
+        private void RunAction(Action runAction)
+        {
             try
             {
-                _implementation?.Run(PuzzleData);
+                _stopwatch.Restart();
+                runAction();
+                _stopwatch.Stop();
+                TimeElapsed = _stopwatch.ElapsedMilliseconds < 10 ? $"{_stopwatch.ElapsedTicks / (TimeSpan.TicksPerMicrosecond)} μs" : $"{_stopwatch.ElapsedMilliseconds} ms";
                 ResultString = _implementation?.GetResult() ?? string.Empty;
             }
             catch (Exception e)
             {
                 ResultString = $"Error during execution: {e.Message}";
-            }
-        }
-
-        public void RunTest() //rm and make unit tests?
-        {
-            try
-            {
-                _implementation?.TestRun();
-                ResultString = _implementation?.GetResult() ?? string.Empty;
-            }
-            catch (Exception e)
-            {
-                ResultString = $"Error during test execution: {e.Message}";
             }
         }
     }
