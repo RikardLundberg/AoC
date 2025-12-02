@@ -3,7 +3,7 @@
     internal class Day2 : IDay
     {
         private string _result { get; set; } = string.Empty;
-        private bool secondPart { get; set; } = false; //should be triggered in UI
+        private bool secondPart { get; set; } = true; //should be triggered in UI
 
         public string GetResult()
         {
@@ -24,13 +24,32 @@
             _result = total.ToString();
         }
 
-        public bool ValidID(string input)
+        private bool ValidID(string input)
+        {
+            return secondPart ? ValidIDSecondStar(input) : ValidIDFirstStar(input);
+        }
+
+        public bool ValidIDFirstStar(string input)
         {
             if (input.Length % 2 != 0)
                 return false;
 
             if (input.StartsWith(input.Substring(input.Length / 2)))
                 return true;
+            return false;
+        }
+
+        public bool ValidIDSecondStar(string input)
+        {
+            for (int i = 1; i <= input.Length / 2; i++)
+            {
+                var segment = input.Substring(0, i);
+                var compareString = segment;
+                while (compareString.Length < input.Length)
+                    compareString += segment;
+                if (compareString.Equals(input))
+                    return true;
+            }
             return false;
         }
 
