@@ -39,14 +39,28 @@ namespace AoC.Models
 
         public void Run()
         {
-            _implementation?.Run(PuzzleData);
-            ResultString = _implementation?.GetResult() ?? string.Empty;
+            try
+            {
+                _implementation?.Run(PuzzleData);
+                ResultString = _implementation?.GetResult() ?? string.Empty;
+            }
+            catch (Exception e)
+            {
+                ResultString = $"Error during execution: {e.Message}";
+            }
         }
 
         public void RunTest()
         {
-            _implementation?.TestRun();
-            ResultString = _implementation?.GetResult() ?? string.Empty;
+            try
+            {
+                _implementation?.TestRun();
+                ResultString = _implementation?.GetResult() ?? string.Empty;
+            }
+            catch (Exception e)
+            {
+                ResultString = $"Error during test execution: {e.Message}";
+            }
         }
     }
 }

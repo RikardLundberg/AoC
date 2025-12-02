@@ -122,7 +122,7 @@ namespace AoC.ViewModels
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
 
-                var cookie = "53616c7465645f5f1914d309222a999fe1bb10ed8d668d64cef250330ec8404e30b6a168d9df17b7ebb38edbf0c6fdf2652f67fbf5554a45fb15c2d2c554a137";
+                var cookie = "53616c7465645f5fc41ee935a6590ffbe717069a74472a1bbaa0313a2a6386a7c1e277fb46cc99394c8d6160bb3d0e16ee6563409f743f29b8c6d772853e688f";
                 var uri = new Uri("https://adventofcode.com");
                 var cookies = new CookieContainer();
                 cookies.Add(uri, new System.Net.Cookie("session", cookie));
