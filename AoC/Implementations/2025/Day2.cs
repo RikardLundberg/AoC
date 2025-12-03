@@ -1,16 +1,8 @@
 ﻿namespace AoC.Implementations._2025
 {
-    internal class Day2 : IDay
+    internal class Day2 : Day
     {
-        private string _result { get; set; } = string.Empty;
-        private bool secondPart { get; set; } = true; //should be triggered in UI
-
-        public string GetResult()
-        {
-            return _result;
-        }
-
-        public void Run(string puzzleData)
+        public override void Run(string puzzleData)
         {
             long total = 0;
             foreach (var range in puzzleData.IterateRanges())
@@ -26,7 +18,7 @@
 
         private bool ValidID(string input)
         {
-            return secondPart ? ValidIDSecondStar(input) : ValidIDFirstStar(input);
+            return _secondStar ? ValidIDSecondStar(input) : ValidIDFirstStar(input);
         }
 
         public bool ValidIDFirstStar(string input)
@@ -53,7 +45,7 @@
             return false;
         }
 
-        public void TestRun()
+        public override void TestRun()
         {
             string input = "11-22,95-115,998-1012,1188511880-1188511890,222220-222224,1698522-1698528,446443-446449,38593856-38593862,565653-565659,824824821-824824827,2121212118-2121212124";
             Run(input);

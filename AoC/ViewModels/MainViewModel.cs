@@ -24,6 +24,7 @@ namespace AoC.ViewModels
         private string _availableActionString { get; set; }
         private string _resultString { get; set; }
         private string _timeElapsed { get; set; }
+        private bool _secondStarChecked { get; set; }
         private int _year { get; set; }
         private int _day { get; set; }
 
@@ -89,18 +90,22 @@ namespace AoC.ViewModels
             UpdateControls();
         }
 
-        public void RunCode()
+        private void RunActiveModel(Action runAction)
         {
-            ActiveModel.Run();
+            ActiveModel.SecondStar = SecondStarChecked;
+            runAction();
             ResultString = ActiveModel.ResultString;
             TimeElapsed = ActiveModel.TimeElapsed;
         }
 
+        public void RunCode()
+        {
+            RunActiveModel(() => ActiveModel.Run());
+        }
+
         public void RunTest()
         {
-            ActiveModel.RunTest();
-            ResultString = ActiveModel.ResultString;
-            TimeElapsed = ActiveModel.TimeElapsed;
+            RunActiveModel(() => ActiveModel.RunTest());
         }
 
         public void ReadFile()
@@ -262,6 +267,22 @@ namespace AoC.ViewModels
                 if (this._timeElapsed != value)
                 {
                     this._timeElapsed = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public bool SecondStarChecked
+        {
+            get
+            {
+                return this._secondStarChecked;
+            }
+            set
+            {
+                if (this._secondStarChecked != value)
+                {
+                    this._secondStarChecked = value;
                     OnPropertyChanged();
                 }
             }

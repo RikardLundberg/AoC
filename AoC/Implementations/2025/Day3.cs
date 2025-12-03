@@ -1,19 +1,11 @@
 ﻿namespace AoC.Implementations._2025
 {
-    internal class Day3 : IDay
+    internal class Day3 : Day
     {
-        private string _result { get; set; } = string.Empty;
-        private bool secondPart { get; set; } = true; //should be triggered in UI
-
-        public string GetResult()
-        {
-            return _result;
-        }
-
-        public void Run(string puzzleData)
+        public override void Run(string puzzleData)
         {
             long total = 0;
-            var size = secondPart ? 12 : 2;
+            var size = _secondStar ? 12 : 2;
             foreach (var bank in puzzleData.Split("\n"))
             {
                 total += GetLargestVoltageFromBank(bank, size);
@@ -50,7 +42,7 @@
             return (position, highest);
         }
 
-        public void TestRun()
+        public override void TestRun()
         {
             string input = "987654321111111\n811111111111119\n234234234234278\n818181911112111";
             Run(input);

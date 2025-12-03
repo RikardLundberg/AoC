@@ -23,6 +23,7 @@
         <Label Content="{Binding ResultString}" HorizontalAlignment="Left" Margin="212,31,0,0" VerticalAlignment="Top"/>
         <Label Content="Time Elapsed: " HorizontalAlignment="Left" Margin="169,57,0,0" VerticalAlignment="Top" Width="84"/>
         <Label Content="{Binding TimeElapsed}" HorizontalAlignment="Left" Margin="247,57,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Second Star" IsChecked="{Binding SecondStarChecked}" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

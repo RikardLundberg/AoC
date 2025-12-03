@@ -1,16 +1,8 @@
 ﻿namespace AoC.Implementations._2025
 {
-    internal class Day1 : IDay
+    internal class Day1 : Day
     {
-        private string _result { get; set; } = string.Empty;
-        private bool secondPart { get; set; } = true; //should be triggered in UI
-
-        public string GetResult()
-        {
-            return _result;
-        }
-
-        public void Run(string puzzleData)
+        public override void Run(string puzzleData)
         {
             var counter = 0;
             var currentPosition = 50;
@@ -21,7 +13,7 @@
 
                 var rotationValue = GetRotation(rotation);
 
-                if (secondPart)
+                if (_secondStar)
                     counter += Math.Abs(rotationValue) / 100;
                 rotationValue %= 100;
 
@@ -29,12 +21,12 @@
 
                 if (currentPosition < 0)
                 {
-                    if (secondPart && currentPosition != rotationValue)
+                    if (_secondStar && currentPosition != rotationValue)
                         counter++;
 
                     currentPosition += 100;
                 }
-                if (secondPart && currentPosition > 100)
+                if (_secondStar && currentPosition > 100)
                     counter++;
                 currentPosition %= 100;
 
@@ -44,7 +36,7 @@
             _result = counter.ToString();
         }
 
-        public void TestRun()
+        public override void TestRun()
         {
             string input = "L68\nL30\nR48\nL5\nR60\nL55\nL1\nL99\nR14\nL82";
             Run(input);

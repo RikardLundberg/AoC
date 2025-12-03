@@ -10,6 +10,7 @@ namespace AoC.Models
         public string PuzzleData { get; private set; } = string.Empty;
         public string ResultString { get; private set; } = string.Empty;
         public string TimeElapsed { get; private set; } = string.Empty;
+        public bool SecondStar { get; set; } = false;
 
         public bool CanRunImplementation { get { return _implementation != null; } private set { } }
         private IDay? _implementation { get; set; } = null;
@@ -54,6 +55,7 @@ namespace AoC.Models
         {
             try
             {
+                _implementation?.SetSecondStar(SecondStar);
                 _stopwatch.Restart();
                 runAction();
                 _stopwatch.Stop();

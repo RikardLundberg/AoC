@@ -1,22 +1,12 @@
 ﻿namespace AoC.Implementations._2024
 {
-    public class Day1 : IDay
+    internal class Day1 : Day
     {
-        public Day1()
-        {
-
-        }
-
-        public string GetResult()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Run(string puzzleData)
+        public override void Run(string puzzleData)
         {
         }
 
-        public void TestRun()
+        public override void TestRun()
         {
         }
     }
