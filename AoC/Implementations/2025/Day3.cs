@@ -12,42 +12,42 @@
 
         public void Run(string puzzleData)
         {
-            var total = 0;
+            long total = 0;
+            var size = secondPart ? 12 : 2;
             foreach (var bank in puzzleData.Split("\n"))
             {
-                total += GetLargestFromBank(bank);
+                total += GetLargestVoltageFromBank(bank, size);
             }
             _result = total.ToString();
         }
 
-        private int GetLargestFromBank(string bank)
+        private long GetLargestVoltageFromBank(string bank, int size)
         {
             var highestJoltage = "";
-            var currentHighest = '0';
-            int start = 0;
-            for (int i = 0; i < bank.Length - 1; i++)
+            for (int i = size - 1; i >= 0; i--)
             {
-                if (bank[i] > currentHighest)
+                var largest = FindLargestNumberInSegment(bank, i);
+                bank = bank.Substring(largest.position + 1);
+                highestJoltage += largest.number;
+            }
+            return long.Parse(highestJoltage);
+        }
+
+        private (int position, char number) FindLargestNumberInSegment(string segment, int skipTailCount)
+        {
+            char highest = '0';
+            int position = -1;
+            for (int i = 0; i < segment.Length - skipTailCount; i++)
+            {
+                if (segment[i] > highest)
                 {
-                    currentHighest = bank[i];
-                    start = i + 1;
+                    highest = segment[i];
+                    position = i;
                 }
-                if (currentHighest == '9')
+                if (highest == '9')
                     break;
             }
-            highestJoltage += currentHighest;
-            currentHighest = '0';
-            for (int i = start; i < bank.Length; i++)
-            {
-                if (bank[i] > currentHighest)
-                {
-                    currentHighest = bank[i];
-                }
-                if (currentHighest == '9')
-                    break;
-            }
-            highestJoltage += currentHighest;
-            return int.Parse(highestJoltage);
+            return (position, highest);
         }
 
         public void TestRun()
