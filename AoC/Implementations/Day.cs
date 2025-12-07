@@ -17,5 +17,10 @@
 
         public abstract void Run(string puzzleData);
         public abstract void TestRun();
+        public virtual void Reset()
+        {
+            _result = string.Empty;
+            _secondStar = false;
+        }
     }
 }

@@ -43,11 +43,13 @@ namespace AoC.Models
 
         public void Run()
         {
+            _implementation?.Reset();
             RunAction(() => _implementation?.Run(PuzzleData));
         }
 
         public void RunTest() //rm and make unit tests?
         {
+            _implementation?.Reset();
             RunAction(() => _implementation?.TestRun());
         }
 
