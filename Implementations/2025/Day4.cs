@@ -1,6 +1,6 @@
-﻿using AoC.Common.Graphs;
+﻿using Common.Graphs;
 
-namespace AoC.Implementations._2025
+namespace Implementations._2025
 {
     internal class Day4 : Day
     {

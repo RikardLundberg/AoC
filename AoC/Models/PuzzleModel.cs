@@ -1,4 +1,4 @@
-﻿using AoC.Implementations;
+﻿using Implementations;
 using System.Diagnostics;
 
 namespace AoC.Models
@@ -25,7 +25,7 @@ namespace AoC.Models
 
             try
             {
-                var implementationClassName = $"AoC.Implementations._{year}.Day{day}, AoC";
+                var implementationClassName = $"Implementations._{year}.Day{day}, Implementations";
                 var _implementationClass = Type.GetType(implementationClassName);
 
                 if (_implementationClass != null)

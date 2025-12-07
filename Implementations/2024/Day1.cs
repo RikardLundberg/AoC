@@ -1,4 +1,4 @@
-﻿namespace AoC.Implementations._2024
+﻿namespace Implementations._2024
 {
     internal class Day1 : Day
     {

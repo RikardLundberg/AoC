@@ -1,4 +1,4 @@
-﻿namespace AoC.Implementations
+﻿namespace Implementations
 {
     abstract class Day : IDay
     {

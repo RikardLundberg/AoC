@@ -1,6 +1,6 @@
-﻿using AoC.Common.Extensions;
+﻿using Common.Extensions;
 
-namespace AoC.Implementations._2025
+namespace Implementations._2025
 {
     internal class Day6 : Day
     {

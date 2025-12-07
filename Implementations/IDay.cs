@@ -1,6 +1,6 @@
-﻿namespace AoC.Implementations
+﻿namespace Implementations
 {
-    interface IDay
+    public interface IDay
     {
         string GetResult();
         void Run(string puzzleData);
