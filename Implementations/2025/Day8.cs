@@ -129,29 +129,4 @@ namespace Implementations._2025
             this.Id = id;
         }
     }
-
-    //public class CircuitComponent
-    //{
-    //    public Point3D Position { get; set; }
-    //    public List<CircuitComponent> Connections { get; set; }
-    //    public CircuitComponent(Point3D position)
-    //    {
-    //        this.Position = position;
-    //        Connections = new List<CircuitComponent>();
-    //    }
-
-    //    public double DistanceTo(CircuitComponent other)
-    //    {
-    //        return (this.Position - other.Position).Length;
-    //    }
-
-    //    public void ConnectTo(CircuitComponent other)
-    //    {
-    //        if (!Connections.Contains(other))
-    //        {
-    //            Connections.Add(other);
-    //            other.Connections.Add(this);
-    //        }
-    //    }
-    //}
 }
