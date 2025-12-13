@@ -51,11 +51,11 @@ namespace AoC.ViewModels
         public void AddDays()
         {
             Days.Clear();
-            int dayCount = 25;
+            int dayCount = Year < 2025 ? 25 : 12;
 
             var dateTimeToday = DateTime.Today;
             if (dateTimeToday.Year == Year && dateTimeToday.Month == 12)
-                dayCount = dateTimeToday.Day > 25 ? 25 : dateTimeToday.Day;
+                dayCount = dateTimeToday.Day > dayCount ? dayCount : dateTimeToday.Day;
 
             for (int i = dayCount; i > 0; i--)
                 Days.Add(i);
