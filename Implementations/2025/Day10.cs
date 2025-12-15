@@ -19,6 +19,8 @@
             var machines = new List<Machine>();
             foreach (var line in puzzleData.Split('\n'))
             {
+                if (string.IsNullOrEmpty(line))
+                    continue; 
                 var machine = new Machine();
                 machine.ReadManual(line);
                 machines.Add(machine);
@@ -60,9 +62,11 @@
         {
             if (StartSequenceMatches(pressedButtons) != -1)
                 return pressedButtons.Count;
-            if (index >= Buttons.Count)
+            if (buttonCount <= pressedButtons.Count)
                 return -1;
-            for (int i = pressedButtons.Count; i < buttonCount; i++)
+            //if (index >= Buttons.Count)
+            //    return -1;
+            for (int i = index; i < Buttons.Count; i++)
             {
                 if (pressedButtons.Contains(i))
                     continue;
@@ -76,7 +80,10 @@
 
         private int StartSequenceMatches(List<int> pressedButtons)
         {
-            var startSequenceTmp = new List<bool>(this.StartSequence);
+            var startSequenceTmp = new List<bool>();
+            for (int i = 0; i < StartSequence.Count; i++)
+                startSequenceTmp.Add(false);
+
             foreach (var button in pressedButtons)
             {
                 for (int i = 0; i < Buttons[button].Count; i++)
@@ -87,9 +94,10 @@
                     startSequenceTmp[position] = !startSequenceTmp[position];
                 }
             }
-            if (startSequenceTmp == StartSequence)
-                return pressedButtons.Count;
-            return -1;
+            for(int i = 0; i < StartSequence.Count; i++)
+                if (startSequenceTmp[i] != StartSequence[i])
+                    return -1;
+            return pressedButtons.Count;
         }
 
         public void ReadManual(string manual)
